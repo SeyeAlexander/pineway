@@ -1,0 +1,157 @@
+@theme {
+  /*
+    Primitives
+  */
+
+  /* Gray */
+  --color-gray-950: #0f0f0f;
+  --color-gray-900: #141414;
+  --color-gray-800: #292929;
+  --color-gray-700: #424242;
+  --color-gray-600: #525252;
+  --color-gray-500: #737373;
+  --color-gray-400: #a3a3a3;
+  --color-gray-300: #d6d6d6;
+  --color-gray-200: #e5e5e5;
+  --color-gray-100: #f5f5f5;
+  --color-gray-75: #f9f9f9;
+  --color-gray-50: #f7f7f7;
+  --color-gray-25: #fcfcfc;
+  --color-gray-10: #fafafa;
+
+  /* Violet */
+  --color-violet-950: #2e125e;
+  --color-violet-900: #491c96;
+  --color-violet-800: #5720b7;
+  --color-violet-700: #6927da;
+  --color-violet-600: #7839ee;
+  --color-violet-500: #875bf7;
+  --color-violet-400: #a48afb;
+  --color-violet-300: #c3b5fd;
+  --color-violet-200: #ddd6fe;
+  --color-violet-100: #ece9fe;
+  --color-violet-50: #f5f3ff;
+  --color-violet-25: #fbfaff;
+
+  /* Red */
+  --color-red-950: #55160c;
+  --color-red-900: #7a271a;
+  --color-red-800: #912018;
+  --color-red-700: #b42318;
+  --color-red-600: #d92d20;
+  --color-red-500: #f04438;
+  --color-red-400: #f97066;
+  --color-red-300: #fda29b;
+  --color-red-200: #fecdca;
+  --color-red-100: #fee4e2;
+  --color-red-50: #fef3f2;
+  --color-red-25: #fffbfa;
+
+  /* Orange */
+  --color-orange-950: #511c10;
+  --color-orange-900: #772917;
+  --color-orange-800: #932f19;
+  --color-orange-700: #b93815;
+  --color-orange-600: #e04f16;
+  --color-orange-500: #ef6820;
+  --color-orange-400: #f38744;
+  --color-orange-300: #f7b27a;
+  --color-orange-200: #f9dbaf;
+  --color-orange-100: #fdead7;
+  --color-orange-50: #fef6ee;
+  --color-orange-25: #fefaf5;
+
+  /* Green */
+  --color-green-950: #053321;
+  --color-green-900: #074d31;
+  --color-green-800: #085d3a;
+  --color-green-700: #067647;
+  --color-green-600: #079455;
+  --color-green-500: #17b26a;
+  --color-green-400: #47cd89;
+  --color-green-300: #75e0a7;
+  --color-green-200: #abefc6;
+  --color-green-100: #dcfae6;
+  --color-green-50: #ecfdf3;
+  --color-green-25: #f6fef9;
+
+  /* Cyan */
+  --color-cyan-950: #0d2d3a;
+  --color-cyan-900: #164c63;
+  --color-cyan-800: #155b75;
+  --color-cyan-700: #0e7090;
+  --color-cyan-600: #088ab2;
+  --color-cyan-500: #06aed4;
+  --color-cyan-400: #22ccee;
+  --color-cyan-300: #67e3f9;
+  --color-cyan-200: #a5f0fc;
+  --color-cyan-100: #cff9fe;
+  --color-cyan-50: #ecfdff;
+  --color-cyan-25: #f5feff;
+
+  /* Indigo */
+  --color-indigo-950: #1f235b;
+  --color-indigo-900: #2d3282;
+  --color-indigo-800: #2d31a6;
+  --color-indigo-700: #3538cd;
+  --color-indigo-600: #444ce7;
+  --color-indigo-500: #6172f3;
+  --color-indigo-400: #8098f9;
+  --color-indigo-300: #a4bcfd;
+  --color-indigo-200: #c7d7fe;
+  --color-indigo-100: #e0eaff;
+  --color-indigo-50: #eef4ff;
+  --color-indigo-25: #f5f8ff;
+
+  /* Rose */
+  --color-rose-950: #510b24;
+  --color-rose-900: #89123e;
+  --color-rose-800: #a11043;
+  --color-rose-700: #c01048;
+  --color-rose-600: #e31b54;
+  --color-rose-500: #f63d68;
+  --color-rose-400: #fd6f8e;
+  --color-rose-300: #fea3b4;
+  --color-rose-200: #fecdd6;
+  --color-rose-100: #ffe4e8;
+  --color-rose-50: #fff1f3;
+  --color-rose-25: #fff5f6;
+
+  /* Amber */
+  --color-yellow-500: #ef6820;
+
+  /* White */
+  --color-white-950: rgba(255, 255, 255, 1);
+  --color-white-900: rgba(255, 255, 255, 0.9);
+  --color-white-800: rgba(255, 255, 255, 0.8);
+  --color-white-700: rgba(255, 255, 255, 0.7);
+  --color-white-600: rgba(255, 255, 255, 0.6);
+  --color-white-500: rgba(255, 255, 255, 0.5);
+  --color-white-400: rgba(255, 255, 255, 0.4);
+  --color-white-300: rgba(255, 255, 255, 0.3);
+  --color-white-200: rgba(255, 255, 255, 0.2);
+  --color-white-100: rgba(255, 255, 255, 0.1);
+  --color-white-50: rgba(255, 255, 255, 0.05);
+  --color-white-25: rgba(255, 255, 255, 0);
+
+  /* Black */
+  --color-black-950: rgba(0, 0, 0, 1);
+  --color-black-900: rgba(0, 0, 0, 0.9);
+  --color-black-800: rgba(0, 0, 0, 0.8);
+  --color-black-700: rgba(0, 0, 0, 0.7);
+  --color-black-600: rgba(0, 0, 0, 0.6);
+  --color-black-500: rgba(0, 0, 0, 0.5);
+  --color-black-400: rgba(0, 0, 0, 0.4);
+  --color-black-300: rgba(0, 0, 0, 0.3);
+  --color-black-200: rgba(0, 0, 0, 0.2);
+  --color-black-100: rgba(0, 0, 0, 0.1);
+  --color-black-50: rgba(0, 0, 0, 0.05);
+  --color-black-25: rgba(0, 0, 0, 0);
+
+  /* Custom Colors */
+  --color-page: #fafafa;
+  --color-whatsapp: #25d366;
+  --color-twitter: #1ea1f2;
+  --color-facebook: #1080f8;
+  --color-linkedin: #0a66c2;
+}

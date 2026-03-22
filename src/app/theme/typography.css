@@ -1,0 +1,27 @@
+@theme inline {
+  --text-2xs: 0.75rem;
+  --text-2xs--line-height: 1rem;
+
+  --text-xs: 0.8125rem;
+  --text-xs--line-height: 150%;
+
+  --text-sm: 0.875rem;
+  --text-sm--line-height: 1.25rem;
+
+  --text-md: 1rem;
+  --text-md--line-height: 1.5rem;
+
+  --text-slg: 1.125rem;
+  --text-slg--line-height: 140%;
+
+  --text-lg: 1.25rem;
+  --text-lg--line-height: 140%;
+
+  --font-display: var(--font-inter);
+}
+
+a {
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  @apply text-gray-600 underline decoration-auto underline-offset-auto hover:text-violet-600;
+}

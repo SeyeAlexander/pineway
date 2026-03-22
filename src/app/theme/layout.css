@@ -1,0 +1,17 @@
+@theme {
+  --radius-xl: 0.625rem;
+  --radius-2xl: 0.75rem;
+  --radius-3xl: 1.25rem;
+  --radius-4xl: 1.5rem;
+  --radius-5xl: 2rem;
+
+  --spacing-xs: 20.25rem;
+  --spacing-sm: 25.5rem;
+
+  --breakpoint-xs: 23.5rem;
+  --breakpoint-sm: 40.0625rem;
+  --breakpoint-md: 48.0625rem;
+  --breakpoint-lg: 64.0625rem;
+  --breakpoint-xl: 80.0625rem;
+  --breakpoint-2xl: 90.0625rem;
+}
