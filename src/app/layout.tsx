@@ -18,16 +18,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={cn("font-sans", inter.variable)}>
+    <html lang='en' className={cn("font-sans", inter.variable)}>
       <body className={`${inter.variable} antialiased`}>
         <CustomQueryClientProvider>
           {children}
           <Toaster
             style={
               {
-                "--width": "440px",
+                "--width": "min(32rem, calc(100vw - 2rem))",
               } as React.CSSProperties
             }
+            offset={40}
           />
         </CustomQueryClientProvider>
       </body>

@@ -2,12 +2,19 @@ import { validate } from "@/lib/http/validate";
 import { Hono } from "hono";
 import z from "zod";
 import { UpdateProfile } from "~/db/schema/profiles";
-import { createProfile, updateUserProfile } from "./profile.service";
+import {
+  createProfile,
+  getPublicUserProfile,
+  getUserProfile,
+  updateUserProfile,
+} from "./profile.service";
 
 const UpdateProfileSchema = z.object({
   username: z.string().optional(),
-  avatarUrl: z.string().optional(),
-  bio: z.string().optional(),
+  name: z.string().nullable().optional(),
+  avatarUrl: z.string().nullable().optional(),
+  bio: z.string().nullable().optional(),
+  note: z.string().nullable().optional(),
 }) satisfies z.ZodType<UpdateProfile>;
 
 const profileRoutes = new Hono()
@@ -17,24 +24,22 @@ const profileRoutes = new Hono()
     const result = await createProfile(userId);
     return c.json(result);
   })
-  // PATCH /profile/:profileId
+  // PATCH /profile
   .patch("/", validate("json", UpdateProfileSchema), async (c) => {
     const profile = c.req.valid("json");
     const result = await updateUserProfile(profile);
     return c.json(result);
   })
-  // GET /profile
+  // GET /profile — authenticated user's own profile
   .get("/", async (c) => {
-    // @todo implement
-    return c.json({
-      message: "Not yet implemented",
-    });
+    const result = await getUserProfile();
+    return c.json(result);
   })
-  // GET /profile/:username
+  // GET /profile/:username — public profile by username
   .get("/:username", async (c) => {
-    return c.json({
-      message: "Not yet implemented",
-    });
+    const username = c.req.param("username");
+    const result = await getPublicUserProfile(username);
+    return c.json(result);
   });
 
 export default profileRoutes;

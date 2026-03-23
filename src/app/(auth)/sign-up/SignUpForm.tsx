@@ -69,12 +69,29 @@ export default function SignInForm() {
       setIsSubmitting(true);
 
       const {
-        data: { user },
+        data: { user, session },
         error,
-      } = await supabase.auth.signUp(data);
+      } = await supabase.auth.signUp({
+        email: data.email,
+        password: data.password,
+        options: {
+          emailRedirectTo: `${window.location.origin}/auth/confirm`,
+        },
+      });
 
       if (!user || error) {
         throw error;
+      }
+
+      if (!session) {
+        showToast({
+          title: "Account created!",
+          description: "Please check your email to verify your account before logging in.",
+          variant: "expanded",
+          type: "success",
+        });
+        setIsSubmitting(false);
+        return;
       }
 
       await createProfileMutation(user.id);

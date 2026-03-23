@@ -1,0 +1,1 @@
+ALTER TABLE "profiles" ADD COLUMN "username_updated_at" timestamp;

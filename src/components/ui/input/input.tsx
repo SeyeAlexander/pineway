@@ -7,8 +7,7 @@ import { cva } from "class-variance-authority";
 import { Cross, Eye, EyeClosed } from "lucide-react";
 import { Button } from "../button/button";
 
-interface InputProps
-  extends Omit<React.ComponentPropsWithRef<"input">, "size" | "value"> {
+interface InputProps extends Omit<React.ComponentPropsWithRef<"input">, "size" | "value"> {
   /**
    * The controlled value of the input.
    * Accepts null to support nullable database fields from Drizzle ORM.
@@ -114,19 +113,14 @@ function Input({
 
   const leadingContentAreaRef = React.useRef<HTMLDivElement>(null);
   const trailingContentAreaRef = React.useRef<HTMLDivElement>(null);
-  const [paddingStart, setPaddingStart] = React.useState(
-    size === "sm" ? 10 : 12,
-  );
+  const [paddingStart, setPaddingStart] = React.useState(size === "sm" ? 10 : 12);
   const [paddingEnd, setPaddingEnd] = React.useState(size === "sm" ? 10 : 12);
 
   const hasIconLeading = !!IconLeading;
   const hasIconTrailing = !!IconTrailing;
 
   const showTrailingContentArea =
-    !!trailingElement ||
-    hasIconTrailing ||
-    showClearInput ||
-    showPasswordViewToggle;
+    !!trailingElement || hasIconTrailing || showClearInput || showPasswordViewToggle;
 
   React.useEffect(() => {
     setPaddingStart(size === "sm" ? 10 : 12);
@@ -145,20 +139,28 @@ function Input({
       const width = trailingContentAreaRef.current.offsetWidth;
       setPaddingEnd(width);
     }
-  }, [
-    trailingElement,
-    IconTrailing,
-    showClearInput,
-    showPasswordViewToggle,
-    size,
-  ]);
+  }, [trailingElement, IconTrailing, showClearInput, showPasswordViewToggle, size]);
 
   return (
-    <div className="relative w-full">
+    <div className='relative w-full flex items-center'>
+      {(hasIconLeading || staticContent) && (
+        <div
+          ref={leadingContentAreaRef}
+          className='pointer-events-none absolute left-0 flex items-center pl-3 gap-2 text-gray-400 h-full'
+        >
+          {hasIconLeading && <IconLeading className='size-4' />}
+          {staticContent?.text && (
+            <div className='flex items-center gap-2 pr-2'>
+              <span className='text-sm tracking-wide'>{staticContent.text}</span>
+              <div className='h-6 w-[1px] bg-gray-300' />
+            </div>
+          )}
+        </div>
+      )}
       <input
         type={type}
         maxLength={maxLength}
-        data-slot="input"
+        data-slot='input'
         data-error={isOverCharLimit ? "true" : undefined}
         className={cn(
           inputVariants({
@@ -183,34 +185,34 @@ function Input({
       {showTrailingContentArea && (
         <div
           ref={trailingContentAreaRef}
-          className="absolute top-0 right-0 bottom-0 my-auto mr-0.5 inline-flex items-center gap-2"
+          className='absolute top-0 right-0 bottom-0 my-auto mr-0.5 inline-flex items-center gap-2'
         >
           {trailingElement ? (
             trailingElement
           ) : (
             <>
-              {hasIconTrailing && <IconTrailing className="mr-2 size-4" />}
+              {hasIconTrailing && <IconTrailing className='mr-2 size-4' />}
               {showClearInput && (
                 <Button
-                  type="button"
+                  type='button'
                   disabled={props.disabled}
                   iconOnly
                   iconLeft={Cross}
-                  size="sm"
-                  variant="ghost"
-                  className="m-1 rounded-full text-gray-500"
+                  size='sm'
+                  variant='ghost'
+                  className='m-1 rounded-full text-gray-500'
                 />
               )}
               {showPasswordViewToggle && (
                 <Button
-                  type="button"
+                  type='button'
                   onClick={onPasswordViewToggleClick}
                   disabled={props.disabled}
                   iconOnly
                   iconLeft={type === "password" ? Eye : EyeClosed}
-                  size="sm"
-                  variant="ghost"
-                  className="m-1 rounded-full text-gray-500"
+                  size='sm'
+                  variant='ghost'
+                  className='m-1 rounded-full text-gray-500'
                 />
               )}
             </>

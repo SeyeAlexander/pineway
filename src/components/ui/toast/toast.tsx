@@ -3,7 +3,7 @@ import { cva } from "class-variance-authority";
 import {
   AlertCircle,
   AlertTriangle,
-  CheckCircle,
+  CheckCircle2Icon,
   Info,
   XIcon,
 } from "lucide-react";
@@ -50,7 +50,7 @@ export function showToast(toastProps: Omit<ToastProps, "id">) {
   });
 }
 
-const toastVariants = cva("flex text-sm p-1.5", {
+const toastVariants = cva("flex min-w-0 flex-1 text-sm p-1.5", {
   variants: {
     variant: {
       inline: "flex-row items-center gap-2",
@@ -92,7 +92,7 @@ function Toast({
         _icon = Info;
         break;
       case "success":
-        _icon = CheckCircle;
+        _icon = CheckCircle2Icon;
         break;
       default:
         _icon = Info;
@@ -101,24 +101,27 @@ function Toast({
   }, [type]);
 
   return (
-    <div className="flex items-start gap-2 rounded-2xl bg-gray-25 p-1.5 shadow-toast">
+    <div className='flex w-full max-w-[32rem] items-start gap-2 rounded-2xl bg-gray-25 p-1 shadow-toast'>
       <DefaultIcon className={cn(iconVariants({ type }))} />
 
       <div className={cn(toastVariants({ variant }))}>
         <section
-          className={`flex ${variant === "expanded" ? "flex-col gap-1" : "gap-2"}`}
+          className={cn(
+            "min-w-0",
+            variant === "expanded" ? "flex flex-col gap-1" : "flex flex-wrap items-start gap-x-2 gap-y-1",
+          )}
         >
-          <h4 className="font-medium">{title}</h4>
-          {description && <p className="text-gray-500">{description}</p>}
+          <h4 className='min-w-0 break-words font-medium'>{title}</h4>
+          {description && <p className='min-w-0 break-words text-gray-500'>{description}</p>}
         </section>
 
         {buttons?.length && variant === "expanded" && (
-          <div className="flex gap-3 self-stretch pb-1">
+          <div className='flex flex-wrap gap-3 self-stretch pb-1'>
             {buttons?.map((buttonProps, index) => (
               <Button
                 {...buttonProps}
                 key={index}
-                size="sm"
+                size='sm'
                 variant={index === 0 ? "neutral" : "link"}
               />
             ))}
@@ -128,11 +131,11 @@ function Toast({
 
       {showClose && (
         <Button
-          variant="ghost"
-          size="sm"
+          variant='ghost'
+          size='sm'
           iconOnly
           iconLeft={XIcon}
-          className="ml-auto"
+          className='ml-auto shrink-0 self-start'
           onClick={() => sonnerToast.dismiss(id)}
         />
       )}

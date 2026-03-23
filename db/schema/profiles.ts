@@ -1,5 +1,5 @@
 import { InferInsertModel, InferSelectModel } from "drizzle-orm";
-import { foreignKey, pgTable, text, uuid } from "drizzle-orm/pg-core";
+import { foreignKey, pgTable, text, timestamp, uuid } from "drizzle-orm/pg-core";
 import { authUsers } from "drizzle-orm/supabase";
 
 export const profilesTable = pgTable(
@@ -10,8 +10,11 @@ export const profilesTable = pgTable(
       .$defaultFn(() => crypto.randomUUID()),
     userId: uuid().notNull().unique(),
     username: text().notNull().unique(),
+    name: text(),
     avatarUrl: text(),
     bio: text(),
+    note: text(),
+    usernameUpdatedAt: timestamp("username_updated_at"),
   },
   (table) => [
     foreignKey({

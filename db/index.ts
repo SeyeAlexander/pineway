@@ -12,8 +12,18 @@ if (!dbUrl) {
   throw new Error(`Please set the "DATABASE_URL" variable`);
 }
 
+// In development, Next.js HMR clears the module cache and re-imports index.ts. 
+// Spawning a new Postgres client and connection pool on every save leads to connection exhaustion and hanging.
+const globalForPostgres = globalThis as unknown as {
+  postgresClient: ReturnType<typeof postgres> | undefined;
+};
+
 // Disable prefetch as it is not supported for "Transaction" pool mode
-const client = postgres(dbUrl, { prepare: false });
+export const client = globalForPostgres.postgresClient ?? postgres(dbUrl, { prepare: false });
+
+if (process.env.NODE_ENV !== "production") {
+  globalForPostgres.postgresClient = client;
+}
 
 export const db = drizzle({ client });
 

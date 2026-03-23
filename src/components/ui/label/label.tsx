@@ -5,8 +5,7 @@ import * as LabelPrimitive from "@radix-ui/react-label";
 import { cva } from "class-variance-authority";
 import * as React from "react";
 
-export interface CustomLabelProps
-  extends React.ComponentPropsWithRef<typeof LabelPrimitive.Root> {
+export interface CustomLabelProps extends React.ComponentPropsWithRef<typeof LabelPrimitive.Root> {
   children: string;
   visuallyHidden?: boolean;
   showOptionalLabel?: boolean;
@@ -39,23 +38,18 @@ function DisplayedLabel({
   showOptionalLabel,
   required,
   description,
-}: Pick<
-  CustomLabelProps,
-  "children" | "showOptionalLabel" | "required" | "description"
->) {
+}: Pick<CustomLabelProps, "children" | "showOptionalLabel" | "required" | "description">) {
   return (
-    <span className="inline-flex w-full flex-col">
-      <span className="inline-flex items-center gap-1">
+    <span className='inline-flex w-full flex-col'>
+      <span className='inline-flex items-center gap-1'>
         {children}
         {required && (
-          <span className="text-red-500" aria-label="This is a required field">
+          <span className='text-red-500' aria-label='This is a required field'>
             *
           </span>
         )}
       </span>
-      {description && (
-        <span className="text-sm font-normal text-gray-500">{description}</span>
-      )}
+      {description && <span className='text-[13px] font-normal text-gray-500'>{description}</span>}
     </span>
   );
 }
@@ -71,12 +65,12 @@ function Label({
 }: CustomLabelProps) {
   return (
     <LabelPrimitive.Root
-      data-slot="label"
+      data-slot='label'
       className={cn(labelVariants({ size }), className)}
       {...props}
     >
       {visuallyHidden ? (
-        <span className="sr-only">{children}</span>
+        <span className='sr-only'>{children}</span>
       ) : (
         <DisplayedLabel
           showOptionalLabel={showOptionalLabel}

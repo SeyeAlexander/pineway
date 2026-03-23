@@ -10,12 +10,8 @@ const wrapperClassname = cn(
 export default function SignInPage() {
   return (
     <div className={wrapperClassname}>
-      <div className="text-center">
-        <Image
-          src={pinewayLogoMark}
-          alt="Pineway logo mark"
-          className="mx-auto"
-        />
+      <div className='text-center'>
+        <Image src={pinewayLogoMark} alt='Pineway logo mark' className='mx-auto' />
       </div>
       <SignInForm />
     </div>

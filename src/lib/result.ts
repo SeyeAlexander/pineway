@@ -26,7 +26,6 @@ export function success<T>(data: T): Result<T> {
  * Create a failure result with an AppError
  */
 export function failure(error: AppError): Result<never> {
-  console.error(error);
   return { success: false, error };
 }
 
